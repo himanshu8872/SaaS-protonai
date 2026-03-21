@@ -2,47 +2,43 @@ import { Button } from "@/components/ui/button";
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-10">
-      
-      {/* HERO SECTION */}
-      <section className="max-w-5xl mx-auto text-center space-y-6">
-        <h1 className="text-5xl font-bold tracking-tight">
-          Meet AI
+    <main className="min-h-screen bg-gradient-to-b from-black via-gray-950 to-black text-white px-6 py-12">
+
+      {/* HERO */}
+      <section className="max-w-6xl mx-auto text-center space-y-6">
+        <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+          Meet <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">AI</span>
         </h1>
+
         <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-          AI-powered video call application with real-time agents, 
-          meeting summaries, and post-call intelligence.
+          AI-powered video calls with real-time agents, smart summaries, and post-call insights.
         </p>
 
-        <div className="flex justify-center gap-4">
-          <Button className="text-lg px-6 py-4">
-            Get Started
+        <div className="flex justify-center gap-4 mt-6">
+          <Button className="px-6 py-5 text-lg rounded-xl">
+            Start Meeting
           </Button>
-          <Button variant="outline" className="text-lg px-6 py-4">
-            Learn More
+          <Button variant="outline" className="px-6 py-5 text-lg rounded-xl border-gray-700">
+            Watch Demo
           </Button>
         </div>
       </section>
 
       {/* FEATURES */}
-      <section className="max-w-6xl mx-auto mt-16">
-        <h2 className="text-3xl font-semibold text-center mb-10">
-          Features
+      <section className="max-w-6xl mx-auto mt-20">
+        <h2 className="text-3xl font-semibold text-center mb-12">
+          Powerful Features
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, i) => (
             <div
               key={i}
-              className="p-5 rounded-2xl border border-gray-800 bg-gray-900 hover:bg-gray-800 transition"
+              className="p-6 rounded-2xl bg-white/5 backdrop-blur border border-white/10 hover:border-white/20 transition"
             >
               <div className="text-2xl mb-3">{feature.icon}</div>
-              <h3 className="font-semibold text-lg mb-1">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 text-sm">
-                {feature.desc}
-              </p>
+              <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
+              <p className="text-sm text-gray-400">{feature.desc}</p>
             </div>
           ))}
         </div>
@@ -50,15 +46,15 @@ export default function Page() {
 
       {/* TECH STACK */}
       <section className="max-w-5xl mx-auto mt-20 text-center">
-        <h2 className="text-3xl font-semibold mb-6">
-          Tech Stack
+        <h2 className="text-3xl font-semibold mb-8">
+          Built With Modern Tech
         </h2>
 
         <div className="flex flex-wrap justify-center gap-3">
           {techStack.map((tech, i) => (
             <span
               key={i}
-              className="px-4 py-2 text-sm bg-gray-800 rounded-full border border-gray-700"
+              className="px-4 py-2 text-sm rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition"
             >
               {tech}
             </span>
@@ -67,12 +63,16 @@ export default function Page() {
       </section>
 
       {/* CTA */}
-      <section className="text-center mt-20 space-y-6">
+      <section className="text-center mt-24 space-y-6">
         <h2 className="text-3xl font-semibold">
-          Ready to upgrade your meetings?
+          Experience AI Meetings Like Never Before
         </h2>
-        <Button className="text-lg px-8 py-5">
-          Start Your First AI Call 🚀
+        <p className="text-gray-400">
+          Smarter calls. Better productivity.
+        </p>
+
+        <Button className="px-8 py-5 text-lg rounded-xl">
+          Try Meet AI 🚀
         </Button>
       </section>
     </main>
@@ -80,46 +80,14 @@ export default function Page() {
 }
 
 const features = [
-  {
-    icon: "🤖",
-    title: "AI Agents",
-    desc: "Run smart AI agents during calls to assist and automate workflows.",
-  },
-  {
-    icon: "📞",
-    title: "Video & Chat",
-    desc: "Real-time communication powered by Stream SDK.",
-  },
-  {
-    icon: "📝",
-    title: "Meeting Summaries",
-    desc: "Automatic transcripts and concise summaries after every call.",
-  },
-  {
-    icon: "🔍",
-    title: "Smart Search",
-    desc: "Search through transcripts and replay key moments instantly.",
-  },
-  {
-    icon: "💳",
-    title: "Subscriptions",
-    desc: "Manage billing and plans with seamless Polar integration.",
-  },
-  {
-    icon: "🔐",
-    title: "Secure Auth",
-    desc: "Robust authentication powered by Better Auth.",
-  },
-  {
-    icon: "📱",
-    title: "Responsive Design",
-    desc: "Works perfectly across mobile, tablet, and desktop.",
-  },
-  {
-    icon: "⚙️",
-    title: "Background Jobs",
-    desc: "Automate workflows using Inngest background processing.",
-  },
+  { icon: "🤖", title: "AI Agents", desc: "Custom agents that assist during meetings." },
+  { icon: "📞", title: "Video & Chat", desc: "Real-time communication with Stream SDK." },
+  { icon: "📝", title: "Summaries", desc: "Auto-generated transcripts and summaries." },
+  { icon: "🔍", title: "Search", desc: "Quickly find key moments in meetings." },
+  { icon: "💳", title: "Subscriptions", desc: "Manage plans with Polar integration." },
+  { icon: "🔐", title: "Auth", desc: "Secure login powered by Better Auth." },
+  { icon: "📱", title: "Responsive", desc: "Optimized for all devices." },
+  { icon: "⚙️", title: "Automation", desc: "Background jobs with Inngest." },
 ];
 
 const techStack = [
@@ -129,9 +97,9 @@ const techStack = [
   "shadcn/ui",
   "tRPC",
   "Drizzle ORM",
-  "Neon Database",
+  "Neon DB",
   "OpenAI",
-  "Stream Video & Chat",
+  "Stream",
   "Better Auth",
   "Inngest",
   "Polar",
