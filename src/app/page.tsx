@@ -2,30 +2,40 @@ import { Button } from "@/components/ui/button";
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-gray-950 to-black text-white px-6 py-12">
+    <main className="relative min-h-screen bg-gradient-to-b from-[#0f0f1a] via-[#050510] to-black text-white px-6 py-12 overflow-hidden">
+
+      {/* BACKGROUND GLOW */}
+      <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/20 blur-[120px] rounded-full" />
+      <div className="absolute bottom-[-100px] right-1/4 w-[400px] h-[400px] bg-blue-600/20 blur-[120px] rounded-full" />
 
       {/* HERO */}
-      <section className="max-w-6xl mx-auto text-center space-y-6">
+      <section className="relative max-w-6xl mx-auto text-center space-y-6">
         <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
-          Meet <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">AI</span>
+          Meet{" "}
+          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            AI
+          </span>
         </h1>
 
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
           AI-powered video calls with real-time agents, smart summaries, and post-call insights.
         </p>
 
         <div className="flex justify-center gap-4 mt-6">
-          <Button className="px-6 py-5 text-lg rounded-xl">
+          <Button className="px-6 py-5 text-lg rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90">
             Start Meeting
           </Button>
-          <Button variant="outline" className="px-6 py-5 text-lg rounded-xl border-gray-700">
+          <Button
+            variant="outline"
+            className="px-6 py-5 text-lg rounded-xl border-gray-600 hover:bg-white/10"
+          >
             Watch Demo
           </Button>
         </div>
       </section>
 
       {/* FEATURES */}
-      <section className="max-w-6xl mx-auto mt-20">
+      <section className="relative max-w-6xl mx-auto mt-20">
         <h2 className="text-3xl font-semibold text-center mb-12">
           Powerful Features
         </h2>
@@ -34,9 +44,11 @@ export default function Page() {
           {features.map((feature, i) => (
             <div
               key={i}
-              className="p-6 rounded-2xl bg-white/5 backdrop-blur border border-white/10 hover:border-white/20 transition"
+              className="p-6 rounded-2xl bg-white/5 backdrop-blur border border-white/10 hover:border-purple-400/40 hover:shadow-lg hover:shadow-purple-500/10 transition"
             >
-              <div className="text-2xl mb-3">{feature.icon}</div>
+              <div className="text-2xl mb-3 p-2 w-fit rounded-lg bg-gradient-to-r from-blue-500/20 to-purple-500/20">
+                {feature.icon}
+              </div>
               <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
               <p className="text-sm text-gray-400">{feature.desc}</p>
             </div>
@@ -54,7 +66,7 @@ export default function Page() {
           {techStack.map((tech, i) => (
             <span
               key={i}
-              className="px-4 py-2 text-sm rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition"
+              className="px-4 py-2 text-sm rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-white/10 hover:scale-105 transition"
             >
               {tech}
             </span>
@@ -71,7 +83,7 @@ export default function Page() {
           Smarter calls. Better productivity.
         </p>
 
-        <Button className="px-8 py-5 text-lg rounded-xl">
+        <Button className="px-8 py-5 text-lg rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 hover:opacity-90">
           Try Meet AI 🚀
         </Button>
       </section>
