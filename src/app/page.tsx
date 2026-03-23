@@ -9,58 +9,84 @@ export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async () => {
+    if (!name || !email || !password) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    setLoading(true);
     try {
       await authClient.signUp.email(
+        { email, name, password },
         {
-          email,
-          name,
-          password,
-        },
-        {
-          onError: () => {
-            alert("Something went wrong");
-          },
-          onSuccess: () => {
-            alert("Success ✅");
-          },
+          onError: () => alert("Something went wrong ❌"),
+          onSuccess: () => alert("Account created ✅"),
         }
       );
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white">
-      <div className="w-full max-w-md space-y-4 p-6 bg-white/5 backdrop-blur rounded-xl border border-white/10">
+    <div className="min-h-screen flex items-center justify-center bg-neutral-950 text-white px-4">
+      
+      <div className="w-full max-w-md space-y-5 p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-lg">
         
-        <h1 className="text-2xl font-semibold text-center mb-4">
-          Create User
-        </h1>
+        {/* Heading */}
+        <div className="text-center space-y-1">
+          <h1 className="text-2xl font-semibold">Create account</h1>
+          <p className="text-sm text-gray-400">
+            Get started in seconds
+          </p>
+        </div>
 
-        <Input
-          placeholder="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        {/* Name */}
+        <div className="space-y-1">
+          <label className="text-sm text-gray-300">Name</label>
+          <Input
+            placeholder="John Doe"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="bg-white/10 border-white/10 focus:ring-1 focus:ring-white"
+          />
+        </div>
 
-        <Input
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        {/* Email */}
+        <div className="space-y-1">
+          <label className="text-sm text-gray-300">Email</label>
+          <Input
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="bg-white/10 border-white/10 focus:ring-1 focus:ring-white"
+          />
+        </div>
 
-        <Input
-          placeholder="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        {/* Password */}
+        <div className="space-y-1">
+          <label className="text-sm text-gray-300">Password</label>
+          <Input
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="bg-white/10 border-white/10 focus:ring-1 focus:ring-white"
+          />
+        </div>
 
-        <Button onClick={onSubmit} className="w-full mt-2">
-          Create user
+        {/* Button */}
+        <Button
+          onClick={onSubmit}
+          disabled={loading}
+          className="w-full mt-2 bg-white text-black hover:bg-gray-200"
+        >
+          {loading ? "Creating..." : "Create account"}
         </Button>
 
       </div>
