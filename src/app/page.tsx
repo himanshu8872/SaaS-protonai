@@ -34,60 +34,91 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral-950 text-white px-4">
-      
-      <div className="w-full max-w-md space-y-5 p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-lg">
-        
+    <div className="min-h-screen flex items-center justify-center px-4 
+      bg-gradient-to-br from-black via-gray-950 to-gray-900 text-white">
+
+      {/* Card */}
+      <div className="w-full max-w-md p-8 rounded-3xl 
+        bg-white/5 backdrop-blur-2xl 
+        border border-white/10 
+        shadow-[0_0_40px_rgba(255,255,255,0.05)] 
+        space-y-6">
+
         {/* Heading */}
-        <div className="text-center space-y-1">
-          <h1 className="text-2xl font-semibold">Create account</h1>
-          <p className="text-sm text-gray-400">
-            Get started in seconds
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-bold tracking-tight">
+            Create Account 🚀
+          </h1>
+          <p className="text-gray-400 text-sm">
+            Join us and start your journey
           </p>
         </div>
 
-        {/* Name */}
-        <div className="space-y-1">
-          <label className="text-sm text-gray-300">Name</label>
-          <Input
-            placeholder="John Doe"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="bg-white/10 border-white/10 focus:ring-1 focus:ring-white"
-          />
-        </div>
+        {/* Inputs */}
+        <div className="space-y-4">
 
-        {/* Email */}
-        <div className="space-y-1">
-          <label className="text-sm text-gray-300">Email</label>
-          <Input
-            placeholder="you@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="bg-white/10 border-white/10 focus:ring-1 focus:ring-white"
-          />
-        </div>
+          {/* Name */}
+          <div className="space-y-1">
+            <label className="text-sm text-gray-300">Name</label>
+            <Input
+              placeholder="John Doe"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="h-11 rounded-xl bg-white/10 border-white/10 
+              focus:ring-2 focus:ring-white/40 
+              placeholder:text-gray-500"
+            />
+          </div>
 
-        {/* Password */}
-        <div className="space-y-1">
-          <label className="text-sm text-gray-300">Password</label>
-          <Input
-            type="password"
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="bg-white/10 border-white/10 focus:ring-1 focus:ring-white"
-          />
+          {/* Email */}
+          <div className="space-y-1">
+            <label className="text-sm text-gray-300">Email</label>
+            <Input
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="h-11 rounded-xl bg-white/10 border-white/10 
+              focus:ring-2 focus:ring-white/40 
+              placeholder:text-gray-500"
+            />
+          </div>
+
+          {/* Password */}
+          <div className="space-y-1">
+            <label className="text-sm text-gray-300">Password</label>
+            <Input
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="h-11 rounded-xl bg-white/10 border-white/10 
+              focus:ring-2 focus:ring-white/40 
+              placeholder:text-gray-500"
+            />
+          </div>
+
         </div>
 
         {/* Button */}
         <Button
           onClick={onSubmit}
           disabled={loading}
-          className="w-full mt-2 bg-white text-black hover:bg-gray-200"
+          className="w-full h-11 mt-2 rounded-xl 
+          bg-white text-black font-semibold 
+          hover:bg-gray-200 
+          transition-all duration-200 
+          hover:scale-[1.02] active:scale-[0.98]"
         >
           {loading ? "Creating..." : "Create account"}
         </Button>
+
+        {/* Footer */}
+        <p className="text-center text-sm text-gray-400">
+          Already have an account?{" "}
+          <span className="text-white hover:underline cursor-pointer">
+            Sign in
+          </span>
+        </p>
 
       </div>
     </div>
